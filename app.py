@@ -71,7 +71,6 @@ hospitalized = st.sidebar.multiselect(
     default=df["Hospitalized"].unique()
 )
 
-# If nothing selected, assume all
 if not gender:
     gender = df["Gender"].unique()
 
@@ -91,7 +90,7 @@ filtered_df = df[
 ]
 
 # ---------------- TITLE ----------------
-st.title("🩺 Post-COVID Health Outcomes Dashboard")
+st.title("Post-COVID Health Outcomes Dashboard")
 st.markdown(
     "Analyzing recovery patterns, symptoms, mental health impact, and Long COVID risk."
 )
@@ -115,7 +114,6 @@ col4.metric(
 
 st.divider()
 
-# ---------------- ROW 1 ----------------
 col5, col6 = st.columns(2)
 
 # Severity vs Recovery
@@ -146,7 +144,7 @@ with col6:
 
 st.divider()
 
-# ---------------- ROW 2 ----------------
+
 col7, col8 = st.columns(2)
 
 # Symptoms Analysis
@@ -203,10 +201,10 @@ with col8:
 
 st.divider()
 
-# ---------------- ROW 3 ----------------
+
 st.subheader("Physical Activity vs Recovery Time")
 
-fig, ax = plt.subplots(figsize=(6, 4))  # 👈 controls size
+fig, ax = plt.subplots(figsize=(6, 4))
 sns.boxplot(
     x="Physical_Activity_Level",
     y="Days_to_Recovery",
@@ -220,13 +218,12 @@ ax.set_xlabel("Physical Activity Level")
 st.pyplot(fig)
 st.divider()
 
-# ---------------- KEY INSIGHTS ----------------
 st.subheader("Key Insights")
 st.markdown("""
-- **Severe COVID cases** show significantly longer recovery times  
-- **Brain fog and fatigue** are strongest indicators of Long COVID  
-- **Mental health impact** increases sharply for high-risk patients  
-- **Higher physical activity** is associated with faster recovery  
+- Severe COVID cases show significantly longer recovery times  
+- Brain fog and fatigue are strongest indicators of Long COVID  
+- Mental health impact increases sharply for high-risk patients  
+- Higher physical activity is associated with faster recovery  
 """)
 
 # ---------------- FOOTER ----------------
